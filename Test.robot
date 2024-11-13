@@ -1,14 +1,11 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library    String
-#Suite Setup       Open Browser To Website
-#Suite Teardown    Close Browser
 Suite Setup    SeleniumLibrary.Set Selenium Speed     0.5
 Test Teardown   Close Browser
 
 *** Variables ***
 ${UAT_URL}         https://training-platform.doppio-tech.com
-#${USERNAME}        Coffee875@gmail.com
 ${PASSWORD}        @Vitamin444
 ${CONFIRM_PASSWORD}  @Vitamin444
 ${PRODUCT}         phone
@@ -81,7 +78,6 @@ Add Product To Cart
     Wait Until Element Is Visible    //span[text()='Product detail page']
     Click Element       xpath=//button[@class="css-eq3tly ant-btn ant-btn-primary"]
 
-
 Fill Delivery Info
     [Arguments]    ${Name}  ${surName}  ${address}  ${phone_number}   
     Click Element       xpath=//div[@id="app"]//span[@aria-label='shopping-cart']
@@ -89,7 +85,6 @@ Fill Delivery Info
     Input Text          xpath=//div[@id="app"]//input[@id='form_item_surName']  ${surName}
     Input Text          xpath=//div[@id="app"]//input[@id='form_item_address']  ${address}
     Input Text          xpath=//div[@id="app"]//input[@id='form_item_phone']    ${phone_number}
-
 
 Purchase Product With Credit Card
     [Arguments]    ${CARD_NUMBER}  ${EXPIRY_DATE}  ${CVC}  ${card_name}
@@ -115,10 +110,10 @@ Navigate to My Orders
     Click Element       xpath=//div[@id="app"]//span[text()='Continue Shopping']
     Click Element    xpath=//div[@id='app']//span[@aria-label='user']
     Scroll Element Into View    xpath=//div[@class='ant-spin-container']
-    Sleep   20S
-    Click Element       xpath=//div[@role="tab" and text()="Preparing"] --
+    Sleep   10S
+    Click Element       xpath=//div[@role="tab" and text()="Preparing"]
     ${order_details}    Get text    xpath=//tr[contains(@class, 'ant-table-row')]/td[1]
-    IF  ${order_details} == ${Order_id} and (xpath Pending) == 
+    IF  ${order_details} == ${Order_id}
         Pass Execution      Order id is correct   
     END
    
@@ -129,7 +124,6 @@ Registration and create order success
     Log To Console  ${user_email}
     Open Browser To Website    ${UAT_URL}
     Register user success   ${user_email}   ${password}     ${confirm_password}
-    #Login with the registered account       ${user_email}    ${PASSWORD}
     Search for product      ${search_P}
     Add product to cart
     Fill Delivery Info  ${Name}  ${surName}  ${address}  ${phone_number}  
@@ -137,4 +131,4 @@ Registration and create order success
     ${Order_id}=      Get Order  
     Log To Console  ${Order_id}
     Navigate To My Orders  ${Order_id} 
-    # Verify Order Creation
+ 
