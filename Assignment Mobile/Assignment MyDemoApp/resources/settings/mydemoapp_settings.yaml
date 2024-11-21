@@ -1,0 +1,6 @@
+remote_url: "http://localhost:4723/wd/hub"
+device_name: "Pixel_4_API_30 "
+platform_version: "11.0"
+platform_name: "Android"
+app_package: "com.saucelabs.mydemoapp.rn"
+app_activity: "com.saucelabs.mydemoapp.rn.MainActivity"

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.0 on win32)" generated="2024-11-19T14:48:22.934591" rpa="false" schemaversion="5">
+<suite id="s1" name="Assignment Mobile" source="C:\Users\Phatthanhun.c\Desktop\Assignment MyDemoApp\Assignment Mobile.robot">
+<test id="s1-t1" name="Open Application and Verify add product to my cart" line="10">
+<kw name="Open Application MyDemoApp" owner="common">
+<kw name="Open Application" owner="AppiumLibrary">
+<arg>remote_url=http://localhost:4723/wd/hub</arg>
+<arg>deviceName=Pixel_4_API_30</arg>
+<arg>platformVersion=11.0</arg>
+<arg>platformName=Android</arg>
+<arg>appPackage=com.saucelabs.mydemoapp.rn</arg>
+<arg>appActivity=com.saucelabs.mydemoapp.rn.MainActivity</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://appium.io/docs/en/2.1/cli/args/
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" start="2024-11-19T14:48:23.175004" elapsed="14.439081"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:23.174598" elapsed="14.440223"/>
+</kw>
+<kw name="Selected products" owner="add_item_to_cart">
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:39.686983" level="INFO">xpath criteria: //android.widget.TextView[@content-desc="store item text" and @text="Sauce Labs Backpack"]</msg>
+<arg>xpath=${ITEM}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:37.616622" elapsed="2.070457"/>
+</kw>
+<kw name="Tap" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:39.687434" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+<msg time="2024-11-19T14:48:40.069406" level="INFO">xpath criteria: //android.widget.TextView[@content-desc="store item text" and @text="Sauce Labs Backpack"]</msg>
+<arg>xpath=${ITEM}</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use `Tap With Positions` keyword.</doc>
+<status status="PASS" start="2024-11-19T14:48:39.687356" elapsed="0.382232"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:37.615641" elapsed="2.454132"/>
+</kw>
+<kw name="Click add to cart" owner="add_item_to_cart">
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<arg>${btn_add_to_cart}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:40.070991" elapsed="1.211965"/>
+</kw>
+<kw name="Tap" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:41.283256" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+<arg>${btn_add_to_cart}</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use `Tap With Positions` keyword.</doc>
+<status status="PASS" start="2024-11-19T14:48:41.283213" elapsed="0.357547"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:40.070496" elapsed="1.570475"/>
+</kw>
+<kw name="Verify number on cart" owner="add_item_to_cart">
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:42.631831" level="INFO">xpath criteria: //android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView//following-sibling::android.widget.TextView
+xpath criteria: //android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView//following-sibling::android.widget.TextView</msg>
+<arg>xpath=${AMOUNT_IN_CART}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:41.642337" elapsed="0.989621"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:42.879798" level="INFO">Element 'xpath=//android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView//following-sibling::android.widget.TextView' text is '1' </msg>
+<msg time="2024-11-19T14:48:42.879936" level="INFO">xpath criteria: //android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView//following-sibling::android.widget.TextView</msg>
+<msg time="2024-11-19T14:48:42.880076" level="INFO">${txt_number} = 1</msg>
+<var>${txt_number}</var>
+<arg>xpath=${AMOUNT_IN_CART}</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="PASS" start="2024-11-19T14:48:42.632201" elapsed="0.247907"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-11-19T14:48:42.880890" level="INFO">${txt_number} = 1</msg>
+<var>${txt_number}</var>
+<arg>${txt_number}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-11-19T14:48:42.880347" elapsed="0.000593"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-11-19T14:48:42.881406" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${txt_number}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-11-19T14:48:42.881164" elapsed="0.000337"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:41.641783" elapsed="1.239821"/>
+</kw>
+<kw name="Click on cart icon" owner="add_item_to_cart">
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:43.047421" level="INFO">xpath criteria: //android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView</msg>
+<arg>xpath=${btn_cart_Icon}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:42.883040" elapsed="0.164511"/>
+</kw>
+<kw name="Tap" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:43.047842" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+<msg time="2024-11-19T14:48:43.515179" level="INFO">xpath criteria: //android.view.ViewGroup[@content-desc="cart badge"]/android.widget.ImageView</msg>
+<arg>xpath=${btn_cart_Icon}</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use `Tap With Positions` keyword.</doc>
+<status status="PASS" start="2024-11-19T14:48:43.047801" elapsed="0.467599"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:42.882350" elapsed="0.633312"/>
+</kw>
+<kw name="Verify that in cart has only one product" owner="add_item_to_cart">
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<arg>${name_my_cart}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:43.517825" elapsed="0.973291"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:44.563662" level="INFO">Element 'accessibility_id=product label' text is 'Sauce Labs Backpack' </msg>
+<msg time="2024-11-19T14:48:44.563909" level="INFO">${name} = Sauce Labs Backpack</msg>
+<var>${name}</var>
+<arg>${name_my_cart}</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="PASS" start="2024-11-19T14:48:44.491617" elapsed="0.072346"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${name}</arg>
+<arg>Sauce Labs Backpack</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.564310" elapsed="0.000346"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Product name : Sauce Labs Backpack</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.564892" elapsed="0.000811"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<arg>${product_price}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.565993" elapsed="0.051464"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:44.687795" level="INFO">Element 'accessibility_id=product price' text is '$29.99' </msg>
+<msg time="2024-11-19T14:48:44.688012" level="INFO">${Price} = $29.99</msg>
+<var>${Price}</var>
+<arg>${product_price}</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="PASS" start="2024-11-19T14:48:44.618296" elapsed="0.069766"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${Price}</arg>
+<arg>29.99</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.688342" elapsed="0.000410"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Price : 29.99</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.688994" elapsed="0.000839"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<arg>${product_item}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.690144" elapsed="0.046642"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:44.822768" level="INFO">Element 'accessibility_id=total number' text is '1 item' </msg>
+<msg time="2024-11-19T14:48:44.823010" level="INFO">${Product_Item} = 1 item</msg>
+<var>${Product_Item}</var>
+<arg>${product_item}</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="PASS" start="2024-11-19T14:48:44.737063" elapsed="0.086029"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${Product_Item}</arg>
+<arg>1 item</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.823422" elapsed="0.000427"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Total Item : 1 item</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.824157" elapsed="0.000966"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="AppiumLibrary">
+<arg>${total_price}</arg>
+<arg>30s</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.825422" elapsed="0.052061"/>
+</kw>
+<kw name="Get Text" owner="AppiumLibrary">
+<msg time="2024-11-19T14:48:44.963658" level="INFO">Element 'accessibility_id=total price' text is '$29.99' </msg>
+<msg time="2024-11-19T14:48:44.963962" level="INFO">${total_price} = $29.99</msg>
+<var>${total_price}</var>
+<arg>${total_price}</arg>
+<doc>Get element text (for hybrid and mobile browser use `xpath` locator, others might cause problem)</doc>
+<status status="PASS" start="2024-11-19T14:48:44.877760" elapsed="0.086267"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${total_price}</arg>
+<arg>$29.99</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.964393" elapsed="0.000520"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Total Price : $29.99</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-11-19T14:48:44.965197" elapsed="0.000805"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:43.516943" elapsed="1.449243"/>
+</kw>
+<status status="PASS" start="2024-11-19T14:48:23.174047" elapsed="21.792574"/>
+</test>
+<status status="PASS" start="2024-11-19T14:48:22.935933" elapsed="22.032387"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Assignment Mobile">Assignment Mobile</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-11-19T14:48:39.687434" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+<msg time="2024-11-19T14:48:41.283256" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+<msg time="2024-11-19T14:48:43.047842" level="WARN">Keyword 'AppiumLibrary.Tap' is deprecated. Since selenium v4, use `Tap With Positions` keyword.</msg>
+</errors>
+</robot>
